@@ -1,5 +1,6 @@
 //we need to add a new namespace
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -17,6 +18,28 @@ List<Person> people = new List<Person>()
 
 
 app.MapGet("/", () => "Hello World!");
+
+
+// get all people
+app.MapGet("/people", () =>
+{
+    return Results.Ok(people);
+});
+
+//add a new person with post
+app.MapPost("/addperson", ([FromForm] string name, [FromForm] int age, [FromForm] string city) =>
+{
+    if (string.IsNullOrEmpty(name) || age == 0)
+    {
+        return Results.BadRequest("Name and age are both required");
+    }
+    // tenery operator = short if else statement    this is the same as if(people.Any()) {people.Max(p=>p.Id)+1} else {1} or
+    int lastIndex=people.Any() ? people.Max(p=>p.Id)+1 : 1;
+
+    Person newPerson = new Person(lastIndex, name, age, city);
+    people.Add(newPerson);
+    return Results.Ok($"new person with the name {newPerson.Name} has been added");
+}).DisableAntiforgery();
 
 app.Run();
 
