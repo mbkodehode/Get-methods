@@ -165,6 +165,8 @@ app.MapGet("/calculator/{operationType}/{number1}/{number2}", (string operationT
             return Results.BadRequest("operation type is not valid");
     }
     return Results.Ok($"the result of {number1} {operationType} {number2} is {result}"); // return the result);
+//dictionary <string char>
+
 });    
     
 app.Run();
