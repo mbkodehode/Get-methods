@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "torturial2", "torturial2\torturial2.csproj", "{A6C740EA-8AC7-4504-9692-CA7492C573F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "torturial3", "torturial3\torturial3.csproj", "{AB58DCC0-3CB7-4A57-A4AC-1284D98A7284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A6C740EA-8AC7-4504-9692-CA7492C573F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6C740EA-8AC7-4504-9692-CA7492C573F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6C740EA-8AC7-4504-9692-CA7492C573F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB58DCC0-3CB7-4A57-A4AC-1284D98A7284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB58DCC0-3CB7-4A57-A4AC-1284D98A7284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB58DCC0-3CB7-4A57-A4AC-1284D98A7284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB58DCC0-3CB7-4A57-A4AC-1284D98A7284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
