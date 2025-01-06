@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\torturial2.props" />
+</Project>
