@@ -41,6 +41,52 @@ app.MapPost("/addperson", ([FromForm] string name, [FromForm] int age, [FromForm
     return Results.Ok($"new person with the name {newPerson.Name} has been added");
 }).DisableAntiforgery();
 
+//find person
+app.MapPost("/findperson", ([FromForm] int Id)=>
+{
+    var doesPersonExist = people.FirstOrDefault(p=>p.Id==Id); //FirstOrDefault returns the first element that satisfies the condition or a default value if no such element is found
+    if (doesPersonExist==null)
+    {
+        //if the person is not found we return not found
+        return Results.NotFound(new {message = $"person with the id {Id} does not exist"});// we can also use Results.NotFound("person with the id {Id} does not exist")
+    }
+    //if the person is found we return the person
+    return Results.Json(new {Id = doesPersonExist.Id, Name = doesPersonExist.Name, Age = doesPersonExist.Age, City = doesPersonExist.City});
+}).DisableAntiforgery();
+// uppdate person
+app.MapPut("/updateperson", ([FromForm] int Id, [FromForm] string updateName, [FromForm] int updateAge, [FromForm] string updateCity)=>
+{
+    var doesPersonExist = people.FirstOrDefault(p=>p.Id==Id);
+    if (doesPersonExist==null)
+    {
+        return Results.NotFound(new {message = $"person with the id {Id} does not exist"});
+    }
+    //update the person by creating a new person with the same id and the new name and age since records are immutable
+    var updateperson = doesPersonExist with {Name = updateName, Age = updateAge, City = updateCity};
+    //find the index of the person in the list
+    var index = people.FindIndex(p=>p.Id==Id);
+    //replace the person in the list with the updated person
+    people[index] = updateperson;
+    return Results.Ok($"person with the id {Id} has been updated");
+}).DisableAntiforgery();
+
+
+// delete person
+app.MapDelete("/deleteperson", ([FromForm] int Id) =>
+{
+    var doesPersonExist = people.FirstOrDefault(p=>p.Id==Id);
+    //check if the person exists
+    if (doesPersonExist==null)
+    {
+        return Results.NotFound(new {message = $"person with the id {Id} does not exist"});
+    }
+    //remove the person from the list
+    people.Remove(doesPersonExist);
+    return Results.Ok(new {message = $"person with the name {doesPersonExist.Name} has been removed"});
+}).DisableAntiforgery();
+
+
+
 app.Run();
 
 record Person(int Id, string Name, int Age, string City);
