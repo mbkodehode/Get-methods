@@ -3,8 +3,21 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//we neew permission to use Addcors
+builder.Services.AddCors(options=>
+{
+    options.AddPolicy("allowAll", policy=>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
+
+//we need to use the cors policy we created in the services for it to work
+app.UseCors("allowAll");
 // i want to create a list that contains the person instances
 List<Person> people = new List<Person>()
 {
