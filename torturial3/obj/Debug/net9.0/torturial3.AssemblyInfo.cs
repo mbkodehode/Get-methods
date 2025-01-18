@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("torturial3")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a6da8db5b2440dbf767df1d89285dd8c13e5b7e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59dd269c7de5d175934cb2dd21216e0f012c68b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("torturial3")]
 [assembly: System.Reflection.AssemblyTitleAttribute("torturial3")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
